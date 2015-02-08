@@ -75,6 +75,14 @@ $(".sendmsg").on('click', function (event){
 
     });
 
+///////////THIS WILL DELETE A MESSAGE IN CHOMP CHAT/////////
+$(".room1").on('click', '.deletemsgx', function (event) {
+ event.preventDefault();
+ console.log("delete message button works");
+ var msgid = $(this).closest('article').data('msgid');
+console.log(msgid);
+//foodies.deletemsg(msgid);
+});
 
 
 
