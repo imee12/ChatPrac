@@ -7,7 +7,7 @@ var foodies = {
 
   init: function() {
     foodies.initStyling();
-
+    foodies.initSignup();
 
    foodies.initEvents();
   },
@@ -17,9 +17,9 @@ var foodies = {
 },
 
 
-initEvents: function (){
-  ///////////  THIS SIGNS UP NEW USER //////////
 
+  ///////////  THIS SIGNS UP NEW USER //////////
+initSignup: function () {
 $('.signup').on('click', function(event) {
     event.preventDefault();
     console.log('signup button works');
@@ -33,14 +33,51 @@ $('.signup').on('click', function(event) {
 /////////PRINTS MESSAGE TO USER IN HEADER
 
 var username=$('input:text').val();
-   $("header").append('<h2> WELCOME '  + username  +  '! </h2>');
+   $(".username").append(username  +  '!' );
 console.log(newuser);
+localStorage.username = $('input:text').val();
 
-   console.log(newuser);
 
     foodies.signup(newuser);
 
 });
+},
+initEvents: function (){
+
+
+////////NOW ENTERING CHOMP CHAT ///////////
+$(".enterroom").on('click', function (event) {
+  console.log("enterroom works");
+  $(".room1").show();
+  $(".chatbox").show();
+  $(".msgbox").show();
+  $(".enterroom").hide();
+//foodies.renderRoom();
+
+});
+
+////////SENDING A MESSAGE IN CHOMP CHAT////////
+
+$(".sendmsg").on('click', function (event){
+  event.preventDefault();
+  console.log("sendmessage button works");
+
+
+
+        var newMsg = {
+          username: (localStorage.username),
+          msg: $('input[name=newmsg]').val(),
+
+      };
+
+      foodies.sendmsg(newMsg)();
+
+    });
+
+
+
+
+
 
 },
 
@@ -53,10 +90,60 @@ signup: function (newuser) {
       console.log(data);
 
       $(".loginbox").hide();
+      $(".username").show();
+      $(".roombutton").show();
   }
 
   });
 },
+
+
+sendmsg: function (msg) {
+    $.ajax ({
+      url:'http://tiy-fee-rest.herokuapp.com/collections/foodies' + '-' + 'room1',
+      data: msg,
+      type: "POST",
+      success: function (data) {
+        console.log(msg);
+      ///var username= JSON.stringify(data);
+    //  localStorage.setItem('userInfo', userInfo);
+
+      /// books.renderRoom1();
+},
+  error: function (error) {
+    console.log(error);
+}
+});
+},
+
+
+
+
+// renderRoom: function () {
+//       $.ajax {(
+//         url:'http://tiy-fee-rest.herokuapp.com/collections/foodies' + '-' + 'room1',
+//         data: messages,
+//         type: 'GET',
+//         success: function () {
+//           var roomTemplate = _.template(room1.template);
+//           var markup= "";
+//           _.each(data, function (item, index, array) {
+//
+//             markup +=roomTemplate(item);
+//     });
+//           console.log('markup is ...');
+//           $('.chatbox').html(markup);
+//   },
+//           error: function (error) {
+//             console.log("error");
+// }
+// });
+// },
+
+
+
+
+
 
 
 

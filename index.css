@@ -23,3 +23,38 @@ header {
 .hide {
   display: none;
 }
+
+.roombutton {
+  width: 150px;
+  height: 150px;
+  background-color: red;
+  display: none;
+}
+
+
+.room1 {
+  width: 800px;
+  height: 800px;
+  background-color: green;
+/*  display: none;*/
+
+}
+
+.username{
+  display: none;
+}
+
+.chatbox {
+  width: 500px;
+  height: 500px;
+  background-color: yellow;
+  display: none;
+}
+
+
+.msgbox {
+  width: 200px;
+  height: 200px;
+  background-color: pink;
+  display: none;
+}
