@@ -70,7 +70,7 @@ $(".sendmsg").on('click', function (event){
           msg: $('input[name=newmsg]').val(),
 
       };
-
+      $("#createMsg")[0].reset();
      foodies.sendmsg(newMsg);
 
     });
@@ -81,7 +81,7 @@ $(".room1").on('click', '.deletemsgx', function (event) {
  console.log("delete message button works");
  var msgid = $(this).closest('article').data('msgid');
 console.log(msgid);
-//foodies.deletemsg(msgid);
+foodies.deletemsg(msgid);
 });
 
 
@@ -116,7 +116,7 @@ sendmsg: function (msg) {
         console.log(msg);
 
 
-      books.renderRoom();
+      foodies.renderRoom();
 },
   error: function (error) {
     console.log(error);
@@ -148,6 +148,21 @@ sendmsg: function (msg) {
 });
 },
 
+
+deletemsg: function (id) {
+
+  $.ajax({
+    url:'http://tiy-fee-rest.herokuapp.com/collections/foodies' + '-' + 'room2/' + id,
+      type: 'DELETE',
+      success: function (data) {
+        console.log(data);
+        foodies.renderRoom();
+      },
+      error: function (err) {
+        console.log(err);
+      }
+    });
+},
 
 
 
