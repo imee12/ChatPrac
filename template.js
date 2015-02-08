@@ -9,3 +9,11 @@ template.room1 = [
   "</article>"
 
 ].join("");
+
+
+template.foodpix = [
+  "div class='fodpix'>",
+  "<img src='<%= img %>'>",
+  "</div>"
+
+].join("");

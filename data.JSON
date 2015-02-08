@@ -1,0 +1,10 @@
+
+
+  var foodpics = [
+    { "img": "images/food1.jpg",
+      "img": "images/food2.jpg",
+      "img": "images/food3.jpg",
+      "img": "images/food4.jpg",
+      "img": "images/food5.jpg"},
+
+    ];
