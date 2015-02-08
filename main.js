@@ -52,7 +52,8 @@ $(".enterroom").on('click', function (event) {
   $(".chatbox").show();
   $(".msgbox").show();
   $(".enterroom").hide();
-//foodies.renderRoom();
+
+  foodies.renderRoom();
 
 });
 
@@ -70,7 +71,7 @@ $(".sendmsg").on('click', function (event){
 
       };
 
-      foodies.sendmsg(newMsg)();
+     foodies.sendmsg(newMsg);
 
     });
 
@@ -100,15 +101,14 @@ signup: function (newuser) {
 
 sendmsg: function (msg) {
     $.ajax ({
-      url:'http://tiy-fee-rest.herokuapp.com/collections/foodies' + '-' + 'room1',
+      url:'http://tiy-fee-rest.herokuapp.com/collections/foodies' + '-' + 'room2',
       data: msg,
       type: "POST",
       success: function (data) {
         console.log(msg);
-      ///var username= JSON.stringify(data);
-    //  localStorage.setItem('userInfo', userInfo);
 
-      /// books.renderRoom1();
+
+      books.renderRoom();
 },
   error: function (error) {
     console.log(error);
@@ -119,26 +119,26 @@ sendmsg: function (msg) {
 
 
 
-// renderRoom: function () {
-//       $.ajax {(
-//         url:'http://tiy-fee-rest.herokuapp.com/collections/foodies' + '-' + 'room1',
-//         data: messages,
-//         type: 'GET',
-//         success: function () {
-//           var roomTemplate = _.template(room1.template);
-//           var markup= "";
-//           _.each(data, function (item, index, array) {
-//
-//             markup +=roomTemplate(item);
-//     });
-//           console.log('markup is ...');
-//           $('.chatbox').html(markup);
-//   },
-//           error: function (error) {
-//             console.log("error");
-// }
-// });
-// },
+ renderRoom: function () {
+      $.ajax ({
+        url:'http://tiy-fee-rest.herokuapp.com/collections/foodies' + '-' + 'room2',
+        //data: msg,
+        type: 'GET',
+        success: function (msg) {
+          var roomTemplate = _.template(template.room1);
+          var markup= "";
+          _.each(msg, function (item, index, array) {
+
+            markup +=roomTemplate(item);
+    });
+          console.log('markup is ...');
+          $('.chatbox').html(markup);
+  },
+          error: function (error) {
+            console.log("error");
+}
+});
+},
 
 
 
