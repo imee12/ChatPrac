@@ -1,0 +1,25 @@
+header {
+
+  width: 100%;
+  height: 200px;
+  background-color: red;
+}
+
+.homescreen {
+  width: 100%;
+  height: 1000px;
+  background-color: purple;
+
+
+}
+
+.loginbox {
+  width: 500px;
+  height: 200px;
+  background-color: blue;
+
+}
+
+.hide {
+  display: none;
+}
