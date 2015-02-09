@@ -1,20 +1,13 @@
 $(document).ready(function () {
-  foodies.init();
+ foodies.init()
+
+
   setInterval(function() {
-  //       console.log("hi everyone!");
-  //       var screenTmpl = _.template(template.foodpix);
-  //       var markup = "";
-  //     _.each(foodpics, function (currentItem, index, array){
-  //       markup+= screenTmpl(currentItem);
-  //       console.log(currentItem);
-  //     });
-  //   $(".homescreen").html(markup);
-  // console.log(markup);
-  //
+        console.log("hi everyone!");
 
-}, 1000);
+
+}, 5000);
 });
-
 
 
 
@@ -83,7 +76,7 @@ $(".sendmsg").on('click', function (event){
         var newMsg = {
           username: (localStorage.username),
           msg: $('input[name=newmsg]').val(),
-
+          //msg2: "busy eating..."
       };
       $("#createMsg")[0].reset();
      foodies.sendmsg(newMsg);
@@ -99,30 +92,7 @@ console.log(msgid);
 foodies.deletemsg(msgid);
 });
 
-///////////THIS WILL LOGIN PREVIOUS USER////////
-// $('.login').on('click', function(event) {
-//     event.preventDefault();
-//     console.log('login button works');
-//
-//     var olduser = {
-//
-//       username: $(this).siblings('input[name="username"]').val(),
-//
-//       status: "loggedin",
-//     };
-/////////PRINTS MESSAGE TO USER IN HEADER
-
-// var username=$('input:text').val();
-//    $(".username").append(username  +  '!' );
-// console.log(olduser);
-// localStorage.username = $('input:text').val();
-//
-//
-//     foodies.signup(olduser);
-//
-// });
-//
- },
+},
 
 signup: function (newuser) {
   $.ajax({
@@ -140,43 +110,12 @@ signup: function (newuser) {
   });
 },
 
-// login: function (newuser) {
-//   $.ajax({
-//     url:'http://tiy-fee-rest.herokuapp.com/collections/foodies' + '-' + 'users',
-//     data: olduser,
-//     type: 'GET',
-//     success: function (data) {
-//       console.log(data);
-//
-//       _.each(data, function (item, index, array) {
-//
-//       if(username==="item.username"){
-//     console.log("I got the username");
-//   } else if (username !="item.username") {
-//     console.log("Nope. not working.");
-//     };
-//     },
-//     error: function (err) {
-//       console.log(err);
-//     }
-//     });
-//
-//
-//
-//
-//       $(".loginbox").hide();
-//       $(".username").show();
-//       $(".roombutton").show();
-//   }
-//
-//   });
-// },
 
 
 
 sendmsg: function (msg) {
     $.ajax ({
-      url:'http://tiy-fee-rest.herokuapp.com/collections/foodies' + '-' + 'room2',
+      url:'http://tiy-fee-rest.herokuapp.com/collections/foodies' + '-' + 'room3',
       data: msg,
       type: "POST",
       success: function (data) {
@@ -196,7 +135,7 @@ sendmsg: function (msg) {
 
  renderRoom: function () {
       $.ajax ({
-        url:'http://tiy-fee-rest.herokuapp.com/collections/foodies' + '-' + 'room2',
+        url:'http://tiy-fee-rest.herokuapp.com/collections/foodies' + '-' + 'room3',
         //data: msg,
         type: 'GET',
         success: function (msg) {
@@ -219,7 +158,7 @@ sendmsg: function (msg) {
 deletemsg: function (id) {
 
   $.ajax({
-    url:'http://tiy-fee-rest.herokuapp.com/collections/foodies' + '-' + 'room2/' + id,
+    url:'http://tiy-fee-rest.herokuapp.com/collections/foodies' + '-' + 'room3/' + id,
       type: 'DELETE',
       success: function (data) {
         console.log(data);

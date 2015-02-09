@@ -12,8 +12,8 @@ template.room1 = [
 
 
 template.foodpix = [
-  "div class='fodpix'>",
-  "<img src='<%= img %>'>",
-  "</div>"
+
+  "<img src='<%= url %>'>",
+
 
 ].join("");

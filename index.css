@@ -58,3 +58,8 @@ header {
   background-color: pink;
   display: none;
 }
+
+aside {
+
+  width: 400px;
+}
